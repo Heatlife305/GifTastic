@@ -1,0 +1,15 @@
+body {
+    background: lightgrey;
+}
+
+button {
+    background: lightseagreen;
+    padding: 5px;
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+button:hover {
+    border: 2px solid cyan;
+}
