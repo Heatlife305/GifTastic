@@ -48,6 +48,8 @@ $(document).ready(function() {
             pOne = $("<p>").text("Rating: " + rating);
 
             //
+            var imgURL = response.data[0].images.original_still
+            console.log(imgURL)
 
 
             // Displays the rating 
