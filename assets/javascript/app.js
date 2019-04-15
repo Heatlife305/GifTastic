@@ -37,28 +37,22 @@ $(document).ready(function() {
             url: queryURL,
             method: "GET"
         }).then(function(response) {
+
+            var results = response.data
+            // Loops through the objects containing the gifs and displays them onto the HTML
+            for (var i = 0; i < results.length; i++) {
+                // 
+                var imgURL = results[i].images.original_still.url;
+
+                var image = $("<img>");
+                image.attr("src", imgURL);
+                console.log(imgURL)
             
-            // Creating a div to hold the gif
-            var gifDiv = $("<div class='gifs'>");
-
-            // This variable will hold the rating data
-            var rating = response.data.rating;
-
-            // Creates a text showing the gif rating 
-            pOne = $("<p>").text("Rating: " + rating);
-
-            //
-            var imgURL = response.data[0].images.original_still
-            console.log(imgURL)
-
-
-            // Displays the rating 
-            gifDiv.append(pOne);
-            console.log(response)
-            console.log(response.data[0].rating)
-
+                $("#gif-view").append(image)
+            }
         });
     }
-    
+    // Adds the 'click' event-listener to all buttons with the class of 'gif-btn'
     $(document).on("click", ".gif-btn", displayGif);
+    
 });
