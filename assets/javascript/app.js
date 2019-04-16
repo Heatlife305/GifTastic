@@ -45,20 +45,34 @@ $(document).ready(function() {
             for (var i = 0; i < results.length; i++) {
                 // 
                 var imgURL = results[i].images.fixed_height_still.url;
+                var gifURL = results[i].images.fixed_height.url;
 
                 var image = $("<img>");
                 image.attr("src", imgURL);
                 image.attr("data-still", imgURL); // Still gif
-                image.attr()
+                image.attr("data-animate", gifURL); // Animate gif
+                image.attr("data-state", "still") // Sets the state of the gif to 'still'
                 image.addClass("gif")
                 $("#gif-view").append(image)
 
             }
-            
         });
     } 
+    
     // Adds the 'click' event-listener to all buttons with the class of 'gif-btn'
     $(document).on("click", ".gif-btn", displayGif);
-    
+
+    // Click event-listener for the gif images
+    $(document).on("click", ".gif", function() {
+        var state = $(this).attr("data-state");
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate")); // Changes the gif to the 'animate' state
+            $(this).attr("data-state", "animate");
+        } else {
+            $(this).attr("src", $(this).attr("data-still")); // Changes the gif to the 'still' state
+            $(this).attr("data-state", "still")
+        }
+        console.log(this)
+    });
     
 });
