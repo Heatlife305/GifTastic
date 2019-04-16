@@ -17,3 +17,18 @@ button:hover {
 img {
     margin: 20px;
 }
+
+#gif-form {
+    margin: 10px;
+}
+
+#add-gif {
+    background: slateblue;
+    color: white;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+label {
+    font-weight: bold;
+}

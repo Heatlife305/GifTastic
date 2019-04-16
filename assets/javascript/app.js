@@ -58,7 +58,7 @@ $(document).ready(function() {
             }
         });
     } 
-    
+
     // Adds the 'click' event-listener to all buttons with the class of 'gif-btn'
     $(document).on("click", ".gif-btn", displayGif);
 
@@ -73,6 +73,17 @@ $(document).ready(function() {
             $(this).attr("data-state", "still")
         }
         console.log(this)
+    });
+
+    $("#add-gif").on("click", function(event){
+        // Prevents the form button from actually submitting the input
+        event.preventDefault();
+        // Grabs input from the textbox
+        userInput = $("#gif-input").val().trim();
+        // Pushes the user input into the topics array
+        topics.push(userInput);
+        // Creates a button for the user input
+        renderButtons();
     });
     
 });
