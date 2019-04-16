@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-    var topics = ["kendrick lamar","jay-z","kanye west","schoolboy q","frank ocean","sza","asap rocky","drake","jermaine cole"];
+    var topics = ["kendrick lamar","jay-z","kanye west","schoolboy q","frank ocean","rihanna","asap rocky","drake","jermaine cole"];
 
 
     // This function will create and display a button for each artist in the topics array 
@@ -37,22 +37,28 @@ $(document).ready(function() {
             url: queryURL,
             method: "GET"
         }).then(function(response) {
+            // Gets rid of any previous gifs
+            $("#gif-view").empty()
 
             var results = response.data
             // Loops through the objects containing the gifs and displays them onto the HTML
             for (var i = 0; i < results.length; i++) {
                 // 
-                var imgURL = results[i].images.original_still.url;
+                var imgURL = results[i].images.fixed_height_still.url;
 
                 var image = $("<img>");
                 image.attr("src", imgURL);
-                console.log(imgURL)
-            
+                image.attr("data-still", imgURL); // Still gif
+                image.attr()
+                image.addClass("gif")
                 $("#gif-view").append(image)
+
             }
+            
         });
-    }
+    } 
     // Adds the 'click' event-listener to all buttons with the class of 'gif-btn'
     $(document).on("click", ".gif-btn", displayGif);
+    
     
 });
