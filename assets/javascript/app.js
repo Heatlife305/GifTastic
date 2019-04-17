@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-    var topics = ["kendrick lamar","jay-z","kanye west","schoolboy q","frank ocean","rihanna","asap rocky","drake","jermaine cole"];
+    var topics = ["kendrick lamar","jay-z","kanye west","schoolboy q","frank ocean","rihanna","asap rocky","drake","jermaine cole", "led zeppelin", "freddie mercury", "prince", "michael jackson"];
 
 
     // This function will create and display a button for each artist in the topics array 
@@ -47,13 +47,20 @@ $(document).ready(function() {
                 var imgURL = results[i].images.fixed_height_still.url;
                 var gifURL = results[i].images.fixed_height.url;
 
+                var gifDiv = $("<div class='gifDiv'>");
+
+                gifRating = $("<p>").text("Rating: " + results[i].rating);
+                gifDiv.append(gifRating);
+            
+
                 var image = $("<img>");
                 image.attr("src", imgURL);
                 image.attr("data-still", imgURL); // Still gif
                 image.attr("data-animate", gifURL); // Animate gif
                 image.attr("data-state", "still") // Sets the state of the gif to 'still'
                 image.addClass("gif")
-                $("#gif-view").append(image)
+                gifDiv.append(image)
+                $("#gif-view").append(gifDiv)
 
             }
         });
